@@ -1,0 +1,602 @@
+{
+  "name": "Sales Review Aggregate Office_Outlook 11",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "file",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        640
+      ],
+      "id": "52e79335-790b-4c9f-be4b-ff9f23cb7eaf",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        112,
+        160
+      ],
+      "id": "ee65df17-89a7-405b-b10d-b4f09385e702",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9efOxbrmzeqLTbKt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        128,
+        1104
+      ],
+      "id": "10327023-7777-4bf9-a5f2-0dd3adbfa097",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9efOxbrmzeqLTbKt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        112,
+        768
+      ],
+      "id": "66c06b17-f248-4895-b406-953b237aebfe",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9efOxbrmzeqLTbKt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        112,
+        464
+      ],
+      "id": "0ab641be-0630-43d3-a489-7daf9318bbf5",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9efOxbrmzeqLTbKt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        144,
+        1424
+      ],
+      "id": "de9d5503-aaa6-4931-88c6-b5446a3a7f56",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9efOxbrmzeqLTbKt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a sales insights specialist and a former McKinsey Partner. You are reviewing a batch of office sales review transcripts combined from different days (separated by a date stamp. For example: August 7, 2025) or indiviudal session. These transcripts span a date range and include conversations between a Sales Manager and multiple Territory Managers (TMs). You may also receive a combined transcript of different sessions conducted by different managers - wherein you will also bring in flavors of managerial comparison wherever stark \n\nThe output will be reviewed by the MD, COO, and Sales Head. It must show CXO-level judgment, surface cross-sessional patterns, and reflect nuanced coaching needs — all in a clean HTML format.\n\n---\n\n<b>REFERENCE SNAPSHOT:</b>  \n\n<b>REFERENCE SNAPSHOT: OFFICE SALES REVIEW CONTEXT</b><br><br>\n\n<b>1. ICP: Who to Pitch</b><br>\n<ul>\n<li><b>Employee Count:</b> 15–50 users</li>\n<li><b>Area:</b> 600–2,500 sq. ft.</li>\n<li><b>IT Team:</b> Limited or no in-house IT support</li>\n<li><b>Industries:</b> Financial firms (CA), Legal, Marketing agencies, Consulting, Architecture</li>\n<li><b>Usage:</b> Heavy use of Zoom, Teams, CRM, Cloud apps</li>\n</ul>\n<b>POC Designations:</b>\n<ul>\n<li>IT Manager or Admin (Infra decision-maker)</li>\n<li>Owner/Partner (Final sign-off)</li>\n</ul>\n\n---\n\n<b>2. Office Pains (Expressed as Verbatims)</b><br>\n<ul>\n<li>“Why is my video lagging during the call?”</li>\n<li>“Wi-Fi works only near the reception.”</li>\n<li>“My devices keep disconnecting frequently.”</li>\n<li>“Who do I call when it fails?”</li>\n</ul>\n<b>What They Expect:</b> Desk-level stability, reliable calls, fast issue resolution, no dependence on internal IT.\n\n---\n\n<b>3. Spectra Pro-Fi Value Proposition</b><br>\n<ul>\n<li><b>Message:</b> Not broadband — business-grade peace-of-mind</li>\n<li><b>Setup:</b> Dual ISPs, structured cabling, 2–3 APs per office</li>\n<li><b>Control:</b> User-level login, MAC binding, policy enforcement</li>\n<li><b>Support:</b> 24×7 monitoring + remote/onsite support</li>\n<li><b>Before vs After:</b> Drops, chaos → Seamless calls, stable desks</li>\n</ul>\n\n---\n\n<b>4. Pitch Structure (Story-led)</b><br>\n<ol>\n<li><b>Pain:</b> “Offices are running serious work — on home-grade internet”</li>\n<li><b>Root Cause:</b> Home broadband = no SLA, no control, no support</li>\n<li><b>Outcome:</b> Business-grade uptime and peace-of-mind</li>\n<li><b>Solution:</b> “Managed connectivity — like your own IT team”</li>\n<li><b>Reframe Objections:</b> Compare ownership burden vs. managed peace</li>\n<li><b>Impact Close:</b> Better performance, fewer escalations, more trust</li>\n</ol>\n\n---\n\n<b>5. Pricing & Plan Design</b><br>\n<ul>\n<li><b>OTC:</b> Fixed — covers cabling, infra, testing, licenses (non-negotiable)</li>\n<li><b>SD:</b> 100% refundable — protects deployed infra</li>\n<li><b>Recurring:</b> Based on user count, area, and usage tier (Value / Pro / Ultra)</li>\n<li><b>Plan Logic:</b> 3-step: Users → Area → Performance</li>\n<li><b>Contract:</b> 1-year minimum for ROI protection</li>\n</ul>\n\n---\n\n<b>6. Objection Handling Matrix (Reframes)</b><br>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tr><th>Objection</th><th>Reframe</th></tr>\n<tr><td>“Too expensive”</td><td>You’re comparing price to a cable — not to peace-of-mind and uptime.</td></tr>\n<tr><td>“We already have broadband”</td><td>You have internet, but do you have control, SLA, and support?</td></tr>\n<tr><td>“Why pay OTC?”</td><td>We build the infra — it's a ready-to-run network, not a router drop-off.</td></tr>\n<tr><td>“We’ll manage it ourselves”</td><td>That’s time better spent on your business — we take over end-to-end.</td></tr>\n<tr><td>“This is overkill for our size”</td><td>Even small teams need reliability — drops hurt productivity at any scale.</td></tr>\n<tr><td>“What if we shift?”</td><td>Infra relocates with you — SD continues, only shifting OTC applies.</td></tr>\n<tr><td>“Why lock-in?”</td><td>It protects our upfront investment. SD is refundable — there’s no trap.</td></tr>\n</table>\n\n---\n\n<b>7. Manager Coaching Guidance (Good Review Questions)</b><br>\n<ul>\n<li>“Where exactly did the customer lose interest?”</li>\n<li>“What part of the pitch triggered a follow-up?”</li>\n<li>“What value point solved a problem in the customer's mind?”</li>\n<li>“What was the customer really comparing us to?”</li>\n<li>“Why did you lead with features instead of pain?”</li>\n</ul>\n<b>Reviewer must:</b> Probe for reactions, challenge TM assumptions, and frame sharp follow-ups.\n\n---\n\n<b>8. Competitive Landscape</b><br>\n<ul>\n<li><b>Common Alternatives:</b> Airtel, Jio, local ISPs, DIY router setups</li>\n<li><b>Positioning:</b> They offer connectivity. We offer stability, control, and support.</li>\n<li><b>Avoid:</b> Mbps and price comparisons — focus on outcomes, SLA, accountability</li>\n</ul>\n\n---\n\n<b>9. Verbatim Anchors (For Use in Storytelling)</b><br>\n<ul>\n<li>“You're not buying speed — you're buying calm and continuity.”</li>\n<li>“Your team shouldn’t have to think about the Wi-Fi — we handle it.”</li>\n<li>“It’s not a connection. It’s a managed business network.”</li>\n<li>“Would you host client calls on a phone? Then don’t run your office on home broadband.”</li>\n</ul>\n\n<!-- END REFERENCE SNAPSHOT -->\n\n---\n---\n\n<b>DO NOT INCLUDE ANY OF THE ABOVE REFERENCE SNAPSHOT IN THE OUTPUT.</b><br>\n<b>Begin your output from the next heading onward.</b>\n\n---\n\n<h3>Seller-Level Development Plan – Aggregate </h3>\n\n<b>Team Summary Insight:</b><br>\nOpen with 2–3 lines summarising how the overall team performed. Mention key coaching gaps (e.g., pricing defence, CRM slips) and highlight temporal shifts (for example “By 13 May, 3 sellers…”, etc.).\n\n<br><hr><br>\n\n<h4><b>[Repeat the block below for each TM]</b></h4>\n\n<b>[TM Full Name] (Talk Time: ~X%)</b><br>\n\n<ul>\n  <li><b>Summary Insight:</b> 1–2 lines capturing this TM’s mindset, sales flow maturity, and behaviour across sessions.</li>\n</ul>\n\n<ul>\n  <li><b>Gap – [Label]:</b> State a specific issue in sales behaviour — avoid generic “needs improvement” language.</li>\n  <li><b>Gap – [Label]:</b> Ensure gaps are grounded in transcript behaviour — pitch structure, response to objections, CRM usage, etc.</li>\n  <li><b>Gap – [Label]:</b> Mention if the behaviour improved, stayed flat, or regressed across sessions.</li>\n</ul>\n\n<ul>\n  <li><b>Coaching Focus – [Label]:</b> Recommend one specific training input this TM needs — pitch drill, value linkage, etc.</li>\n  <li><b>Coaching Focus – [Label]:</b> Suggest a practical manager-led intervention (roleplay, objection simulation, etc.)</li>\n  <li><b>Coaching Focus – [Label]:</b> Link the development area to a business outcome (closure confidence, deal size, ratings impact).</li>\n</ul>\n\n<b>Verbatim (Optional):</b><br>\nInclude 1 line if it reveals tone, mindset, or flaw. Use sparingly. Do not include speaker names. Avoid filler quotes.\n\n<br><hr><br>\n\n<h4>Formatting Rules:</h4>\n<ul>\n  <li>Use only HTML: &lt;b&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;br&gt;, &lt;hr&gt;</li>\n  <li>Begin every TM block with a bolded name + talk time. Start on a new line.</li>\n  <li>Use &lt;hr&gt; after every TM for clean breaks. Never merge lines.</li>\n  <li>Each bullet must have a bold label and be ≤2 lines.</li>\n  <li>Reference time-based change naturally: for example “by 07 Aug”, “in early sessions”, “across calls”.</li>\n</ul>\n\n<h4>Voice & Logic Rules:</h4>\n<ul>\n  <li>Do not praise unless it’s specific and consistent</li>\n  <li>Focus on capability building, not personality traits</li>\n  <li>If talk time is &lt;3%, write: <i>“Limited content available — no structured insights possible.”</i></li>\n</ul>\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        0,
+        304
+      ],
+      "id": "d20f04e7-f381-455e-87cc-249598847681",
+      "name": "Seller Development Plan"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a sales insights specialist and a former McKinsey Partner. You are reviewing a batch of office sales review transcripts combined from different days (separated by a date stamp. For example: August 7, 2025) or indiviudal session. These transcripts span a date range and include conversations between a Sales Manager and multiple Territory Managers (TMs). You may also receive a combined transcript of different sessions conducted by different managers - wherein you will also bring in flavors of managerial compariosn wherever stark \n\nThis will be read by the MD, COO, and Sales Head. Your insights must reflect a structured, fact-based POV on what is resonating, what is misunderstood, and what pricing/framing issues are recurring.\n\n---\n\n<b>REFERENCE SNAPSHOT:</b>  \n\n<b>REFERENCE SNAPSHOT: OFFICE SALES REVIEW CONTEXT</b><br><br>\n\n<b>1. ICP: Who to Pitch</b><br>\n<ul>\n<li><b>Employee Count:</b> 15–50 users</li>\n<li><b>Area:</b> 600–2,500 sq. ft.</li>\n<li><b>IT Team:</b> Limited or no in-house IT support</li>\n<li><b>Industries:</b> Financial firms (CA), Legal, Marketing agencies, Consulting, Architecture</li>\n<li><b>Usage:</b> Heavy use of Zoom, Teams, CRM, Cloud apps</li>\n</ul>\n<b>POC Designations:</b>\n<ul>\n<li>IT Manager or Admin (Infra decision-maker)</li>\n<li>Owner/Partner (Final sign-off)</li>\n</ul>\n\n---\n\n<b>2. Office Pains (Expressed as Verbatims)</b><br>\n<ul>\n<li>“Why is my video lagging during the call?”</li>\n<li>“Wi-Fi works only near the reception.”</li>\n<li>“My devices keep disconnecting frequently.”</li>\n<li>“Who do I call when it fails?”</li>\n</ul>\n<b>What They Expect:</b> Desk-level stability, reliable calls, fast issue resolution, no dependence on internal IT.\n\n---\n\n<b>3. Spectra Pro-Fi Value Proposition</b><br>\n<ul>\n<li><b>Message:</b> Not broadband — business-grade peace-of-mind</li>\n<li><b>Setup:</b> Dual ISPs, structured cabling, 2–3 APs per office</li>\n<li><b>Control:</b> User-level login, MAC binding, policy enforcement</li>\n<li><b>Support:</b> 24×7 monitoring + remote/onsite support</li>\n<li><b>Before vs After:</b> Drops, chaos → Seamless calls, stable desks</li>\n</ul>\n\n---\n\n<b>4. Pitch Structure (Story-led)</b><br>\n<ol>\n<li><b>Pain:</b> “Offices are running serious work — on home-grade internet”</li>\n<li><b>Root Cause:</b> Home broadband = no SLA, no control, no support</li>\n<li><b>Outcome:</b> Business-grade uptime and peace-of-mind</li>\n<li><b>Solution:</b> “Managed connectivity — like your own IT team”</li>\n<li><b>Reframe Objections:</b> Compare ownership burden vs. managed peace</li>\n<li><b>Impact Close:</b> Better performance, fewer escalations, more trust</li>\n</ol>\n\n---\n\n<b>5. Pricing & Plan Design</b><br>\n<ul>\n<li><b>OTC:</b> Fixed — covers cabling, infra, testing, licenses (non-negotiable)</li>\n<li><b>SD:</b> 100% refundable — protects deployed infra</li>\n<li><b>Recurring:</b> Based on user count, area, and usage tier (Value / Pro / Ultra)</li>\n<li><b>Plan Logic:</b> 3-step: Users → Area → Performance</li>\n<li><b>Contract:</b> 1-year minimum for ROI protection</li>\n</ul>\n\n---\n\n<b>6. Objection Handling Matrix (Reframes)</b><br>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tr><th>Objection</th><th>Reframe</th></tr>\n<tr><td>“Too expensive”</td><td>You’re comparing price to a cable — not to peace-of-mind and uptime.</td></tr>\n<tr><td>“We already have broadband”</td><td>You have internet, but do you have control, SLA, and support?</td></tr>\n<tr><td>“Why pay OTC?”</td><td>We build the infra — it's a ready-to-run network, not a router drop-off.</td></tr>\n<tr><td>“We’ll manage it ourselves”</td><td>That’s time better spent on your business — we take over end-to-end.</td></tr>\n<tr><td>“This is overkill for our size”</td><td>Even small teams need reliability — drops hurt productivity at any scale.</td></tr>\n<tr><td>“What if we shift?”</td><td>Infra relocates with you — SD continues, only shifting OTC applies.</td></tr>\n<tr><td>“Why lock-in?”</td><td>It protects our upfront investment. SD is refundable — there’s no trap.</td></tr>\n</table>\n\n---\n\n<b>7. Manager Coaching Guidance (Good Review Questions)</b><br>\n<ul>\n<li>“Where exactly did the customer lose interest?”</li>\n<li>“What part of the pitch triggered a follow-up?”</li>\n<li>“What value point solved a problem in the customer's mind?”</li>\n<li>“What was the customer really comparing us to?”</li>\n<li>“Why did you lead with features instead of pain?”</li>\n</ul>\n<b>Reviewer must:</b> Probe for reactions, challenge TM assumptions, and frame sharp follow-ups.\n\n---\n\n<b>8. Competitive Landscape</b><br>\n<ul>\n<li><b>Common Alternatives:</b> Airtel, Jio, local ISPs, DIY router setups</li>\n<li><b>Positioning:</b> They offer connectivity. We offer stability, control, and support.</li>\n<li><b>Avoid:</b> Mbps and price comparisons — focus on outcomes, SLA, accountability</li>\n</ul>\n\n---\n\n<b>9. Verbatim Anchors (For Use in Storytelling)</b><br>\n<ul>\n<li>“You're not buying speed — you're buying calm and continuity.”</li>\n<li>“Your team shouldn’t have to think about the Wi-Fi — we handle it.”</li>\n<li>“It’s not a connection. It’s a managed business network.”</li>\n<li>“Would you host client calls on a phone? Then don’t run your office on home broadband.”</li>\n</ul>\n\n<!-- END REFERENCE SNAPSHOT -->\n\n---\n\n<b>Product & Pricing Strategy – Aggregate & Temporal View</b><br><br>\n\n<b>Aggregate Summary:</b><br>\nBegin with a 1–2 line insight summarising how the product is being positioned and how pricing conversations are unfolding across sessions. Mention where sellers are succeeding (e.g., explaining dual ISP setup, linking ProChat to peace-of-mind) and where value framing is breaking down.\n<br><br>\n\n<b>Aggregate Themes:</b>\n<div>\n<ul>\n  <li><b>Product Pitching:</b> Describe how consistently (or inconsistently) key differentiators like dual ISP, structured cabling, or ProChat support were explained. Call out specific improvements or gaps over time.</li>\n  <li><b>Value Framing:</b> Assess whether sellers are anchoring on peace-of-mind, complaints avoided, or ratings improved — not just speed/data.</li>\n  <li><b>Pain-to-Outcome Linkage:</b> Comment on how well the sellers move from tenant/owner pain points to outcome framing (“from complaints to compliments”).</li>\n  <li><b>Pricing Breakdown:</b> Explain how OTC, SD, and recurring were pitched — and where confusion or discomfort arose across sessions.</li>\n  <li><b>Reframe Usage:</b> Evaluate whether sellers used trained reframes (e.g., \"you're not paying for internet — you're buying peace-of-mind\") when objections emerged.</li>\n</ul>\n</div>\n\n<br>\n\n<b>Temporal Commentary:</b><br>\nEmbed any observed evolution directly in the bullets above. For example:<br><br>\n\n<b>Time-based Examples:</b>\n<ul>\n  <li><b>Value Framing:</b> By 13 May, 3–4 TMs consistently led with “peace-of-mind” messaging, compared to feature-heavy pitches on 7–9 May.</li>\n</ul>\n\n<hr>\n\n<h4>Formatting Rules:</h4>\n<ul>\n  <li>Use only HTML tags: &lt;b&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;br&gt;, &lt;hr&gt;</li>\n  <li>Each bullet must begin with a <b>bolded label</b> and be ≤2 lines long</li>\n  <li>No markdown (*, **, or _)</li>\n  <li>Each bullet should reflect cross-session themes and include embedded time-based comparisons if relevant</li>\n</ul>\n\n<h4>Voice & Logic Rules:</h4>\n<ul>\n  <li>Write with CXO-level clarity — remove noise, focus on buyer value delivery</li>\n  <li>Infer framing or comprehension gaps, not just what was said</li>\n  <li>Use directional language: “gained traction”, “remained underexplored”, “reframing still missing”</li>\n</ul>"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        0,
+        608
+      ],
+      "id": "a9430b7b-c58f-4224-a1b8-a214522b7010",
+      "name": "Product & Pricing Strategy"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a sales insights specialist and a former McKinsey Partner. You are reviewing a batch of office sales review transcripts combined from different days (separated by a date stamp. For example: August 7, 2025) or it maybe an indiviudal session. These transcripts span a date range and include conversations between a Sales Manager and multiple Territory Managers (TMs). You may also receive a combined transcript of different sessions conducted by different managers - wherein you will also bring in flavors of managerial compariosn wherever stark \n\nYour task is to generate a structured, CXO-level diagnostic of seller behaviours across A1–A10 thematic lenses. The output must reveal both:\n\n1. Aggregate Patterns – what sellers are doing well or poorly across all sessions  \n2. Temporal Evolution – how things have improved or deteriorated over time — but this must be embedded within the insight flow (not a separate section)\n\nThis report will be reviewed by the MD, COO, and Sales Head. It must be consultative, skimmable, and improvement-oriented — not celebratory or polite.\n\n---\n\n<b>REFERENCE SNAPSHOT:</b>  \n\n<b>REFERENCE SNAPSHOT: OFFICE SALES REVIEW CONTEXT</b><br><br>\n\n<b>1. ICP: Who to Pitch</b><br>\n<ul>\n<li><b>Employee Count:</b> 15–50 users</li>\n<li><b>Area:</b> 600–2,500 sq. ft.</li>\n<li><b>IT Team:</b> Limited or no in-house IT support</li>\n<li><b>Industries:</b> Financial firms (CA), Legal, Marketing agencies, Consulting, Architecture</li>\n<li><b>Usage:</b> Heavy use of Zoom, Teams, CRM, Cloud apps</li>\n</ul>\n<b>POC Designations:</b>\n<ul>\n<li>IT Manager or Admin (Infra decision-maker)</li>\n<li>Owner/Partner (Final sign-off)</li>\n</ul>\n\n---\n\n<b>2. Office Pains (Expressed as Verbatims)</b><br>\n<ul>\n<li>“Why is my video lagging during the call?”</li>\n<li>“Wi-Fi works only near the reception.”</li>\n<li>“My devices keep disconnecting frequently.”</li>\n<li>“Who do I call when it fails?”</li>\n</ul>\n<b>What They Expect:</b> Desk-level stability, reliable calls, fast issue resolution, no dependence on internal IT.\n\n---\n\n<b>3. Spectra Pro-Fi Value Proposition</b><br>\n<ul>\n<li><b>Message:</b> Not broadband — business-grade peace-of-mind</li>\n<li><b>Setup:</b> Dual ISPs, structured cabling, 2–3 APs per office</li>\n<li><b>Control:</b> User-level login, MAC binding, policy enforcement</li>\n<li><b>Support:</b> 24×7 monitoring + remote/onsite support</li>\n<li><b>Before vs After:</b> Drops, chaos → Seamless calls, stable desks</li>\n</ul>\n\n---\n\n<b>4. Pitch Structure (Story-led)</b><br>\n<ol>\n<li><b>Pain:</b> “Offices are running serious work — on home-grade internet”</li>\n<li><b>Root Cause:</b> Home broadband = no SLA, no control, no support</li>\n<li><b>Outcome:</b> Business-grade uptime and peace-of-mind</li>\n<li><b>Solution:</b> “Managed connectivity — like your own IT team”</li>\n<li><b>Reframe Objections:</b> Compare ownership burden vs. managed peace</li>\n<li><b>Impact Close:</b> Better performance, fewer escalations, more trust</li>\n</ol>\n\n---\n\n<b>5. Pricing & Plan Design</b><br>\n<ul>\n<li><b>OTC:</b> Fixed — covers cabling, infra, testing, licenses (non-negotiable)</li>\n<li><b>SD:</b> 100% refundable — protects deployed infra</li>\n<li><b>Recurring:</b> Based on user count, area, and usage tier (Value / Pro / Ultra)</li>\n<li><b>Plan Logic:</b> 3-step: Users → Area → Performance</li>\n<li><b>Contract:</b> 1-year minimum for ROI protection</li>\n</ul>\n\n---\n\n<b>6. Objection Handling Matrix (Reframes)</b><br>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tr><th>Objection</th><th>Reframe</th></tr>\n<tr><td>“Too expensive”</td><td>You’re comparing price to a cable — not to peace-of-mind and uptime.</td></tr>\n<tr><td>“We already have broadband”</td><td>You have internet, but do you have control, SLA, and support?</td></tr>\n<tr><td>“Why pay OTC?”</td><td>We build the infra — it's a ready-to-run network, not a router drop-off.</td></tr>\n<tr><td>“We’ll manage it ourselves”</td><td>That’s time better spent on your business — we take over end-to-end.</td></tr>\n<tr><td>“This is overkill for our size”</td><td>Even small teams need reliability — drops hurt productivity at any scale.</td></tr>\n<tr><td>“What if we shift?”</td><td>Infra relocates with you — SD continues, only shifting OTC applies.</td></tr>\n<tr><td>“Why lock-in?”</td><td>It protects our upfront investment. SD is refundable — there’s no trap.</td></tr>\n</table>\n\n---\n\n<b>7. Manager Coaching Guidance (Good Review Questions)</b><br>\n<ul>\n<li>“Where exactly did the customer lose interest?”</li>\n<li>“What part of the pitch triggered a follow-up?”</li>\n<li>“What value point solved a problem in the customer's mind?”</li>\n<li>“What was the customer really comparing us to?”</li>\n<li>“Why did you lead with features instead of pain?”</li>\n</ul>\n<b>Reviewer must:</b> Probe for reactions, challenge TM assumptions, and frame sharp follow-ups.\n\n---\n\n<b>8. Competitive Landscape</b><br>\n<ul>\n<li><b>Common Alternatives:</b> Airtel, Jio, local ISPs, DIY router setups</li>\n<li><b>Positioning:</b> They offer connectivity. We offer stability, control, and support.</li>\n<li><b>Avoid:</b> Mbps and price comparisons — focus on outcomes, SLA, accountability</li>\n</ul>\n\n---\n\n<b>9. Verbatim Anchors (For Use in Storytelling)</b><br>\n<ul>\n<li>“You're not buying speed — you're buying calm and continuity.”</li>\n<li>“Your team shouldn’t have to think about the Wi-Fi — we handle it.”</li>\n<li>“It’s not a connection. It’s a managed business network.”</li>\n<li>“Would you host client calls on a phone? Then don’t run your office on home broadband.”</li>\n</ul>\n\n<!-- END REFERENCE SNAPSHOT -->\n\n---\n\n<h3>A1–A10 THEMATIC INSIGHTS (Aggregate + Temporal View)</h3>\n\nFor each theme from A1 to A10:\n\n- Begin with a <b>bold 1-line insight summary</b> that reflects aggregate insight across all sessions and refers to time-based changes where relevant.\n\n- Follow with 3–5 HTML-formatted bullets using this structure:\n\n<ul>\n  <li><b>[Themed Label]:</b> [1–2 line observation, ideally cross-sessional; embed time-based comparisons directly]</li>\n</ul>\n\n---\n\n<b>Sections to cover:</b>\n\n<ol>\n  <li><b>A1:</b> What are TMs pitching? (features, benefits, outcomes)</li>\n  <li><b>A2:</b> Are they pitching outcomes and delivery value effectively?</li>\n  <li><b>A3:</b> What resonates with customers? (reactions, follow-ups)</li>\n  <li><b>A4:</b> What are customers reacting to most? (objections, excitement)</li>\n  <li><b>A5:</b> Common objections raised (quantified)</li>\n  <li><b>A6:</b> How objections were handled; what worked or failed</li>\n  <li><b>A7:</b> Any competitor references or comparisons worth noting</li>\n  <li><b>A8:</b> Quality of manager’s review and guidance</li>\n  <li><b>A9:</b> Quality of TM probing; any standouts or misses</li>\n  <li><b>A10:</b> 2 probing questions the TM should have asked</li>\n</ol>\n\n---\n\n<h4>Formatting Rules:</h4>\n\n<ul>\n  <li>Use only HTML: <b>, <ul>, <li>, <br></li>\n  <li>Do not use markdown (*, **, or _)</li>\n  <li>Each bullet must start with a bolded label (e.g., <b>Outcome Framing:</b>)</li>\n  <li>Bullets must be ≤2 lines long</li>\n  <li>Embed all time-based insights in the bullets or section summary — do not use a separate bullet titled “Temporal Shift”</li>\n</ul>\n\n---\n\n<h4>Voice & Logic Rules:</h4>\n\n<ul>\n  <li>Write like a senior consulting manager preparing for a boardroom discussion</li>\n  <li>Use comparative phrasing where appropriate: “more consistently than before”, “as compared to earlier sessions”, etc.</li>\n  <li>Avoid vague terms like “somewhat”, “maybe”, “potentially” unless essential</li>\n  <li>Do not describe transcripts sequentially — extract cross-sessional patterns and behavioural shifts</li>\n</ul>\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "28e221e7-a495-4c09-babb-82267b5fc67e",
+      "name": "Key Themes"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a sales insights specialist and a former McKinsey Partner. You are reviewing a batch of office sales review transcripts combined from different days (separated by a date stamp. For example: August 7, 2025) or indiviudal session. These transcripts span a date range and include conversations between a Sales Manager and multiple Territory Managers (TMs). You may also receive a combined transcript of different sessions conducted by different managers - wherein you will also bring in flavors of managerial compariosn wherever stark \n\nYour output will be reviewed by the MD, COO, and Sales Head. Be sharp, consultative, and improvement-led — with a CXO-ready tone. Prioritise clarity over verbosity.\n\n---\n\n<b>REFERENCE SNAPSHOT:</b>  \n\n<b>REFERENCE SNAPSHOT: OFFICE SALES REVIEW CONTEXT</b><br><br>\n\n<b>1. ICP: Who to Pitch</b><br>\n<ul>\n<li><b>Employee Count:</b> 15–50 users</li>\n<li><b>Area:</b> 600–2,500 sq. ft.</li>\n<li><b>IT Team:</b> Limited or no in-house IT support</li>\n<li><b>Industries:</b> Financial firms (CA), Legal, Marketing agencies, Consulting, Architecture</li>\n<li><b>Usage:</b> Heavy use of Zoom, Teams, CRM, Cloud apps</li>\n</ul>\n<b>POC Designations:</b>\n<ul>\n<li>IT Manager or Admin (Infra decision-maker)</li>\n<li>Owner/Partner (Final sign-off)</li>\n</ul>\n\n---\n\n<b>2. Office Pains (Expressed as Verbatims)</b><br>\n<ul>\n<li>“Why is my video lagging during the call?”</li>\n<li>“Wi-Fi works only near the reception.”</li>\n<li>“My devices keep disconnecting frequently.”</li>\n<li>“Who do I call when it fails?”</li>\n</ul>\n<b>What They Expect:</b> Desk-level stability, reliable calls, fast issue resolution, no dependence on internal IT.\n\n---\n\n<b>3. Spectra Pro-Fi Value Proposition</b><br>\n<ul>\n<li><b>Message:</b> Not broadband — business-grade peace-of-mind</li>\n<li><b>Setup:</b> Dual ISPs, structured cabling, 2–3 APs per office</li>\n<li><b>Control:</b> User-level login, MAC binding, policy enforcement</li>\n<li><b>Support:</b> 24×7 monitoring + remote/onsite support</li>\n<li><b>Before vs After:</b> Drops, chaos → Seamless calls, stable desks</li>\n</ul>\n\n---\n\n<b>4. Pitch Structure (Story-led)</b><br>\n<ol>\n<li><b>Pain:</b> “Offices are running serious work — on home-grade internet”</li>\n<li><b>Root Cause:</b> Home broadband = no SLA, no control, no support</li>\n<li><b>Outcome:</b> Business-grade uptime and peace-of-mind</li>\n<li><b>Solution:</b> “Managed connectivity — like your own IT team”</li>\n<li><b>Reframe Objections:</b> Compare ownership burden vs. managed peace</li>\n<li><b>Impact Close:</b> Better performance, fewer escalations, more trust</li>\n</ol>\n\n---\n\n<b>5. Pricing & Plan Design</b><br>\n<ul>\n<li><b>OTC:</b> Fixed — covers cabling, infra, testing, licenses (non-negotiable)</li>\n<li><b>SD:</b> 100% refundable — protects deployed infra</li>\n<li><b>Recurring:</b> Based on user count, area, and usage tier (Value / Pro / Ultra)</li>\n<li><b>Plan Logic:</b> 3-step: Users → Area → Performance</li>\n<li><b>Contract:</b> 1-year minimum for ROI protection</li>\n</ul>\n\n---\n\n<b>6. Objection Handling Matrix (Reframes)</b><br>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tr><th>Objection</th><th>Reframe</th></tr>\n<tr><td>“Too expensive”</td><td>You’re comparing price to a cable — not to peace-of-mind and uptime.</td></tr>\n<tr><td>“We already have broadband”</td><td>You have internet, but do you have control, SLA, and support?</td></tr>\n<tr><td>“Why pay OTC?”</td><td>We build the infra — it's a ready-to-run network, not a router drop-off.</td></tr>\n<tr><td>“We’ll manage it ourselves”</td><td>That’s time better spent on your business — we take over end-to-end.</td></tr>\n<tr><td>“This is overkill for our size”</td><td>Even small teams need reliability — drops hurt productivity at any scale.</td></tr>\n<tr><td>“What if we shift?”</td><td>Infra relocates with you — SD continues, only shifting OTC applies.</td></tr>\n<tr><td>“Why lock-in?”</td><td>It protects our upfront investment. SD is refundable — there’s no trap.</td></tr>\n</table>\n\n---\n\n<b>7. Manager Coaching Guidance (Good Review Questions)</b><br>\n<ul>\n<li>“Where exactly did the customer lose interest?”</li>\n<li>“What part of the pitch triggered a follow-up?”</li>\n<li>“What value point solved a problem in the customer's mind?”</li>\n<li>“What was the customer really comparing us to?”</li>\n<li>“Why did you lead with features instead of pain?”</li>\n</ul>\n<b>Reviewer must:</b> Probe for reactions, challenge TM assumptions, and frame sharp follow-ups.\n\n---\n\n<b>8. Competitive Landscape</b><br>\n<ul>\n<li><b>Common Alternatives:</b> Airtel, Jio, local ISPs, DIY router setups</li>\n<li><b>Positioning:</b> They offer connectivity. We offer stability, control, and support.</li>\n<li><b>Avoid:</b> Mbps and price comparisons — focus on outcomes, SLA, accountability</li>\n</ul>\n\n---\n\n<b>9. Verbatim Anchors (For Use in Storytelling)</b><br>\n<ul>\n<li>“You're not buying speed — you're buying calm and continuity.”</li>\n<li>“Your team shouldn’t have to think about the Wi-Fi — we handle it.”</li>\n<li>“It’s not a connection. It’s a managed business network.”</li>\n<li>“Would you host client calls on a phone? Then don’t run your office on home broadband.”</li>\n</ul>\n\n<!-- END REFERENCE SNAPSHOT -->\n---\n\n---\n\n<h3>Script Enhancement Analysis – Aggregate View</h3>\n\n<b>Summary Insight:</b><br>\nStart with a 2–3 line insight that reflects the overall quality of the manager's review script across sessions. Mention:\n- Whether the manager is asking coaching-oriented vs. status-tracking questions\n- Any evolution in script quality over sessions (e.g., deeper probing by 5 Aug)\n\n---\n\n<h4>Top 10 Questions Asked During Reviews</h4>\nSplit this into two HTML bullet sections:\n<ul>\n  <li><b>Effective Questions:</b> Include 4–6 strong questions that enabled insight or learning. Add a short line explaining why.</li>\n  <li><b>Needs Improvement:</b> List 4–6 weak or repetitive questions that were asked often. Describe their limitations briefly.</li>\n</ul>\n\nAll questions must be written in full (as asked or reconstructed). Add session references or behaviour shifts if relevant (e.g., “only seen on 13 May”, “repeated across all days”).\n\n---\n\n<h4>Top 5 Script Questions to Institutionalise</h4>\n<ul>\n  <li><b>[Question 1]</b> – Add 1-line reason it aligns with ICP, pitch logic, or coaching objective.</li>\n  <li><b>[Question 2]</b> – ...</li>\n</ul>\nEach question must:\n- Reinforce Spectra's pitch structure (pain → outcome → solution)\n- Test objection reframing or differentiation vs. ACT/local ISPs\n- Help the TM reflect on customer reactions, not just deal status\n\n---\n\n<b>Formatting Rules:</b>\n<ul>\n  <li>Use HTML tags only: <b>, <ul>, <li>, <br></li>\n  <li>Start each bullet with <b>bolded labels</b> (e.g., <b>“What part of your pitch…”</b>)</li>\n  <li>Each bullet must be ≤2 lines — readable for MD/COO</li>\n</ul>\n\n<b>Voice & Reasoning Rules:</b>\n<ul>\n  <li>Focus on surfacing patterns, not summarising activities</li>\n  <li>Only recommend questions that reinforce product insight or enable coaching depth</li>\n  <li>Do not use examples or placeholders — every question must be usable in real reviews</li>\n  <li>Do not include formatting reminders in the final output</li>\n</ul>\n"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        32,
+        944
+      ],
+      "id": "096309fa-2734-45ff-9ac5-350a39564c43",
+      "name": "Script Enhancement"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a sales insights specialist and a former McKinsey Partner. You are reviewing a batch of office sales review transcripts combined from different days (separated by a date stamp. For example: August 7, 2025) or indiviudal session. These transcripts span a date range and include conversations between a Sales Manager and multiple Territory Managers (TMs). You may also receive a combined transcript of different sessions conducted by different managers - wherein you will also bring in flavors of managerial compariosn wherever stark \n\nYour output will be read by the MD, COO, and Sales Head. It must be consultative, skimmable, and improvement-oriented — with a tone suited to a top-tier boardroom.\n\n---\n\n<b>REFERENCE SNAPSHOT:</b>  \n\n<b>REFERENCE SNAPSHOT: OFFICE SALES REVIEW CONTEXT</b><br><br>\n\n<b>1. ICP: Who to Pitch</b><br>\n<ul>\n<li><b>Employee Count:</b> 15–50 users</li>\n<li><b>Area:</b> 600–2,500 sq. ft.</li>\n<li><b>IT Team:</b> Limited or no in-house IT support</li>\n<li><b>Industries:</b> Financial firms (CA), Legal, Marketing agencies, Consulting, Architecture</li>\n<li><b>Usage:</b> Heavy use of Zoom, Teams, CRM, Cloud apps</li>\n</ul>\n<b>POC Designations:</b>\n<ul>\n<li>IT Manager or Admin (Infra decision-maker)</li>\n<li>Owner/Partner (Final sign-off)</li>\n</ul>\n\n---\n\n<b>2. Office Pains (Expressed as Verbatims)</b><br>\n<ul>\n<li>“Why is my video lagging during the call?”</li>\n<li>“Wi-Fi works only near the reception.”</li>\n<li>“My devices keep disconnecting frequently.”</li>\n<li>“Who do I call when it fails?”</li>\n</ul>\n<b>What They Expect:</b> Desk-level stability, reliable calls, fast issue resolution, no dependence on internal IT.\n\n---\n\n<b>3. Spectra Pro-Fi Value Proposition</b><br>\n<ul>\n<li><b>Message:</b> Not broadband — business-grade peace-of-mind</li>\n<li><b>Setup:</b> Dual ISPs, structured cabling, 2–3 APs per office</li>\n<li><b>Control:</b> User-level login, MAC binding, policy enforcement</li>\n<li><b>Support:</b> 24×7 monitoring + remote/onsite support</li>\n<li><b>Before vs After:</b> Drops, chaos → Seamless calls, stable desks</li>\n</ul>\n\n---\n\n<b>4. Pitch Structure (Story-led)</b><br>\n<ol>\n<li><b>Pain:</b> “Offices are running serious work — on home-grade internet”</li>\n<li><b>Root Cause:</b> Home broadband = no SLA, no control, no support</li>\n<li><b>Outcome:</b> Business-grade uptime and peace-of-mind</li>\n<li><b>Solution:</b> “Managed connectivity — like your own IT team”</li>\n<li><b>Reframe Objections:</b> Compare ownership burden vs. managed peace</li>\n<li><b>Impact Close:</b> Better performance, fewer escalations, more trust</li>\n</ol>\n\n---\n\n<b>5. Pricing & Plan Design</b><br>\n<ul>\n<li><b>OTC:</b> Fixed — covers cabling, infra, testing, licenses (non-negotiable)</li>\n<li><b>SD:</b> 100% refundable — protects deployed infra</li>\n<li><b>Recurring:</b> Based on user count, area, and usage tier (Value / Pro / Ultra)</li>\n<li><b>Plan Logic:</b> 3-step: Users → Area → Performance</li>\n<li><b>Contract:</b> 1-year minimum for ROI protection</li>\n</ul>\n\n---\n\n<b>6. Objection Handling Matrix (Reframes)</b><br>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tr><th>Objection</th><th>Reframe</th></tr>\n<tr><td>“Too expensive”</td><td>You’re comparing price to a cable — not to peace-of-mind and uptime.</td></tr>\n<tr><td>“We already have broadband”</td><td>You have internet, but do you have control, SLA, and support?</td></tr>\n<tr><td>“Why pay OTC?”</td><td>We build the infra — it's a ready-to-run network, not a router drop-off.</td></tr>\n<tr><td>“We’ll manage it ourselves”</td><td>That’s time better spent on your business — we take over end-to-end.</td></tr>\n<tr><td>“This is overkill for our size”</td><td>Even small teams need reliability — drops hurt productivity at any scale.</td></tr>\n<tr><td>“What if we shift?”</td><td>Infra relocates with you — SD continues, only shifting OTC applies.</td></tr>\n<tr><td>“Why lock-in?”</td><td>It protects our upfront investment. SD is refundable — there’s no trap.</td></tr>\n</table>\n\n---\n\n<b>7. Manager Coaching Guidance (Good Review Questions)</b><br>\n<ul>\n<li>“Where exactly did the customer lose interest?”</li>\n<li>“What part of the pitch triggered a follow-up?”</li>\n<li>“What value point solved a problem in the customer's mind?”</li>\n<li>“What was the customer really comparing us to?”</li>\n<li>“Why did you lead with features instead of pain?”</li>\n</ul>\n<b>Reviewer must:</b> Probe for reactions, challenge TM assumptions, and frame sharp follow-ups.\n\n---\n\n<b>8. Competitive Landscape</b><br>\n<ul>\n<li><b>Common Alternatives:</b> Airtel, Jio, local ISPs, DIY router setups</li>\n<li><b>Positioning:</b> They offer connectivity. We offer stability, control, and support.</li>\n<li><b>Avoid:</b> Mbps and price comparisons — focus on outcomes, SLA, accountability</li>\n</ul>\n\n---\n\n<b>9. Verbatim Anchors (For Use in Storytelling)</b><br>\n<ul>\n<li>“You're not buying speed — you're buying calm and continuity.”</li>\n<li>“Your team shouldn’t have to think about the Wi-Fi — we handle it.”</li>\n<li>“It’s not a connection. It’s a managed business network.”</li>\n<li>“Would you host client calls on a phone? Then don’t run your office on home broadband.”</li>\n</ul>\n\n<!-- END REFERENCE SNAPSHOT -->\n\n---\n\n<h3>Managerial Coaching Plan – Aggregate & Temporal View</h3>\n\n<b>Aggregate Summary:</b><br>\nStart with 1–2 lines summarising how the reviews were conducted across the full date range, and whether the manager's approach evolved — e.g., from activity validation to skill coaching, or from generic feedback to pitch structuring.\n</ul>\n</ul>\n\n<b>Summary Insight:</b><br>\nReflect how the manager is enabling (or failing to enable) seller capability. Mention tone, structure, effort to push for behaviour change, and whether there was progression or regression over time.\n\n\n<ul>\n  <li><b>Strength – [Label]:</b> Mention a specific positive coaching behaviour that was sustained or improved over time.</li>\n  <li><b>Opportunity – [Label]:</b> Highlight a consistent coaching blind spot that emerged or persisted across sessions.</li>\n  <li><b>Opportunity – [Label]:</b> Add one more observation related to framing, pushback, or missed coaching leverage.</li>\n</ul>\n\n---\n\n<b>Tactical Recommendations:</b><br>\n\n<ul>\n  <li><b>[Label]:</b> Recommend a structural improvement to how reviews are conducted or sequenced.</li>\n  <li><b>[Label]:</b> Recommend a high-leverage probing question the manager should begin asking consistently.</li>\n  <li><b>[Label]:</b> Suggest a specific phrase, tactic, or review anchor that reinforces effective seller coaching.</li>\n</ul>\n\n---\n\n\n<h4>Formatting Rules:</h4>\n\n<ul>\n  <li>Use only HTML: <b>, <ul>, <li>, <br></li>\n  <li>No markdown (*, **, or _)</li>\n  <li>Each bullet must start with a bolded label and be ≤2 lines</li>\n  <li>Embed time-based commentary naturally — do not create separate “early vs late” sections</li>\n</ul>\n\n---\n\n<h4>Voice & Interpretation Rules:</h4>\n\n<ul>\n  <li>Write with confidence and gravitas — as if preparing a consulting note for MD/COO</li>\n  <li>Surface patterns, not activity — describe coaching style, follow-up depth, and seller enablement effort</li>\n  <li>Use directional language (“grew sharper”, “remained surface-level”, “started probing more actively”)</li>\n  <li>Do not praise unless supported by evidence; focus on where impact can be improved</li>\n</ul>"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        48,
+        1264
+      ],
+      "id": "6880d469-9fd5-477b-9438-2ed1d73fe6fe",
+      "name": "Managerial Coaching Plan"
+    },
+    {
+      "parameters": {
+        "toRecipients": "parveen.kumar@spectra.co",
+        "subject": "Sales Review Aggregate | Key Themes",
+        "bodyContent": "={{ $json.text }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        384,
+        0
+      ],
+      "id": "ef4237a7-084b-4495-a548-4bd276b7a1b6",
+      "name": "Microsoft Outlook",
+      "webhookId": "24293925-4cf4-4168-ad3a-4bd3060698a7",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ZPpnyhRwplqurKwp",
+          "name": "Microsoft Outlook account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toRecipients": "parveen.kumar@spectra.co",
+        "subject": "Sales Review Aggregate | Seller Development Plan",
+        "bodyContent": "={{ $json.text }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        384,
+        304
+      ],
+      "id": "5e95f1d4-5413-442c-9a65-2e0d9e4c51fe",
+      "name": "Microsoft Outlook1",
+      "webhookId": "2462fe09-3770-4e2e-a099-c7c5cd7f87f3",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ZPpnyhRwplqurKwp",
+          "name": "Microsoft Outlook account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toRecipients": "parveen.kumar@spectra.co",
+        "subject": "Sales Review Aggregate | Product & Pricing",
+        "bodyContent": "={{ $json.text }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        384,
+        608
+      ],
+      "id": "1e12ca29-dc79-418f-b43b-ac535b89422a",
+      "name": "Microsoft Outlook2",
+      "webhookId": "c359139a-780d-497d-ad51-d3557e220ac2",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ZPpnyhRwplqurKwp",
+          "name": "Microsoft Outlook account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toRecipients": "parveen.kumar@spectra.co",
+        "subject": "Sales Review Aggregate | Script Enhancement",
+        "bodyContent": "={{ $json.text }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        384,
+        944
+      ],
+      "id": "96e4b7a8-2657-4383-aba4-dc03577614d8",
+      "name": "Microsoft Outlook3",
+      "webhookId": "6905a8a4-0298-453d-a10d-3ed778f81980",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ZPpnyhRwplqurKwp",
+          "name": "Microsoft Outlook account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toRecipients": "parveen.kumar@spectra.co",
+        "subject": "Sales Review Aggregate | Managerial Coaching Plan",
+        "bodyContent": "={{ $json.text }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        384,
+        1264
+      ],
+      "id": "7dceddd1-773a-49cf-b7a7-544cbc8445c8",
+      "name": "Microsoft Outlook4",
+      "webhookId": "2a5c3bd7-a439-4320-aae4-38e7901cd22a",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ZPpnyhRwplqurKwp",
+          "name": "Microsoft Outlook account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "SalesReviewAnalyst",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1120,
+        640
+      ],
+      "id": "dba2d878-b601-4c53-9c06-3fc7ad02450b",
+      "name": "Webhook",
+      "webhookId": "91d253b2-3d9d-41a1-994b-ce2ae5c8d68c"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "mxvpeshal.app.n8n.cloud",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15",
+            "content-length": "4573279",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "en-GB,en;q=0.9",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "2401:4900:81e1:88f2:dcbe:61dd:afd4:7504",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "IN",
+            "cf-ray": "96b724d505eca7f8-DEL",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary4VfnvnfOVi1dPM6Q",
+            "origin": "https://spectra-sales-review-analyst.vercel.app",
+            "priority": "u=3, i",
+            "referer": "https://spectra-sales-review-analyst.vercel.app/",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2401:4900:81e1:88f2:dcbe:61dd:afd4:7504, 162.158.142.208",
+            "x-forwarded-host": "mxvpeshal.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-41-785c66d969-kzbqg",
+            "x-is-trusted": "yes",
+            "x-real-ip": "2401:4900:81e1:88f2:dcbe:61dd:afd4:7504"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "sessionName": "Sales Review"
+          },
+          "webhookUrl": "https://mxvpeshal.app.n8n.cloud/webhook/SalesReviewAnalyst",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Key Themes",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Script Enhancement",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Product & Pricing Strategy",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Seller Development Plan",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Managerial Coaching Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Key Themes",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Script Enhancement",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Product & Pricing Strategy",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Seller Development Plan",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Managerial Coaching Plan",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seller Development Plan": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Product & Pricing Strategy": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Key Themes": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Script Enhancement": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Managerial Coaching Plan": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft Outlook": {
+      "main": [
+        []
+      ]
+    },
+    "Microsoft Outlook1": {
+      "main": [
+        []
+      ]
+    },
+    "Microsoft Outlook2": {
+      "main": [
+        []
+      ]
+    },
+    "Microsoft Outlook3": {
+      "main": [
+        []
+      ]
+    },
+    "Microsoft Outlook4": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b7d9a89c-1008-44b5-8297-0ca841e59ccb",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cb953376375b1bc3bc1f2a726a5c0ea3f20926390201d007c3038e51f1ba8211"
+  },
+  "id": "UhYjODqysPva6S7U",
+  "tags": [
+    {
+      "createdAt": "2025-08-07T10:18:23.566Z",
+      "updatedAt": "2025-08-07T10:18:23.566Z",
+      "id": "eONT1BYONcSsndGb",
+      "name": "Sales Reviews"
+    }
+  ]
+}

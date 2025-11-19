@@ -1,0 +1,6 @@
+{
+  "name": "Meeting Transcript Uploader",
+  "description": "An application to merge multiple PDF files into a single document and submit it to a webhook.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
